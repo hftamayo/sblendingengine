@@ -6,13 +6,13 @@ import java.util.Objects;
 public final class LoanRequest {
 
     private final double amount;
-    private final User borower;
+    private final User borrower;
     private final Duration repaymentTerm;
     private final double interestRate;
 
-    public LoanRequest(double amount, User borower, Duration repaymentTerm, double interestRate) {
+    public LoanRequest(double amount, User borrower, Duration repaymentTerm, double interestRate) {
         this.amount = amount;
-        this.borower = borower;
+        this.borrower = borrower;
         this.repaymentTerm = repaymentTerm;
         this.interestRate = interestRate;
     }
@@ -21,8 +21,8 @@ public final class LoanRequest {
         return amount;
     }
 
-    public User getBorower() {
-        return borower;
+    public User getBorrower() {
+        return borrower;
     }
 
     public Duration getRepaymentTerm() {
@@ -40,20 +40,20 @@ public final class LoanRequest {
         LoanRequest that = (LoanRequest) o;
         return Double.compare(that.amount, amount) == 0 &&
                 Double.compare(that.interestRate, interestRate) == 0 &&
-                Objects.equals(borower, that.borower) &&
+                Objects.equals(borrower, that.borrower) &&
                 Objects.equals(repaymentTerm, that.repaymentTerm);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(amount, borower, repaymentTerm, interestRate);
+        return Objects.hash(amount, borrower, repaymentTerm, interestRate);
     }
 
     @Override
     public String toString() {
         return "LoanRequest{" +
                 "amount=" + amount +
-                ", borower=" + borower +
+                ", borower=" + borrower +
                 ", repaymentTerm=" + repaymentTerm +
                 ", interestRate=" + interestRate +
                 '}';
