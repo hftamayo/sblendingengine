@@ -1,6 +1,7 @@
 package com.tamayo.lendingengine.application;
 
-import com.tamayo.lendingengine.domain.model.LoanRequest;
+import com.tamayo.lendingengine.application.model.LoanRequest;
+import com.tamayo.lendingengine.domain.model.LoanApplication;
 import com.tamayo.lendingengine.domain.repository.LoanRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,8 +22,9 @@ public class LoanController {
     //anotacion para informar que el controller usara el metodo post de http
     //RequestBody mapea el request con la clase LoanRequest
     @PostMapping(value = "/loan/request")
-    public void requestLoan(@RequestBody final LoanRequest loanRequest){
-        System.out.println(loanRequest);
+    public void requestLoan(@RequestBody final LoanRequest loanApplication){
+
+        System.out.println(loanApplication);
     }
 
 }
