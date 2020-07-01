@@ -9,16 +9,24 @@ import java.util.Objects;
 public final class User {
     @Id
     private long id;
-    private final String lastName;
-    private final String firstName;
-    private final int age;
-    private final String ocupation;
+    private String lastName;
+    private String firstName;
+    private int age;
+    private String occupation;
 
-    public User(String lastName, String firstName, int age, String ocupation) {
+    public User() {
+    }
+
+    public User(long id, String lastName, String firstName, int age, String occupation) {
+        this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
         this.age = age;
-        this.ocupation = ocupation;
+        this.occupation = occupation;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getLastName() {
@@ -33,36 +41,39 @@ public final class User {
         return age;
     }
 
-    public String getOcupation() {
-        return ocupation;
+    public String getOccupation() {
+        return occupation;
     }
 
     //reescribir los metodos toString, equals y hashCode para usar estructuras de datos
     // leer el libro effective java para los fundamentos
 
     @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", age=" + age +
+                ", occupation='" + occupation + '\'' +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return age == user.age &&
+        return id == user.id &&
+                age == user.age &&
                 Objects.equals(lastName, user.lastName) &&
                 Objects.equals(firstName, user.firstName) &&
-                Objects.equals(ocupation, user.ocupation);
+                Objects.equals(occupation, user.occupation);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(lastName, firstName, age, ocupation);
+        return Objects.hash(id, lastName, firstName, age, occupation);
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "lastName='" + lastName + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", age=" + age +
-                ", ocupation='" + ocupation + '\'' +
-                '}';
-    }
 }
